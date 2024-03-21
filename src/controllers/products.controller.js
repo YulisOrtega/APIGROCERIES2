@@ -22,19 +22,19 @@ export const getOne=(request, response)=>{
 
 export const insertOne=(request, response)=>{
     productDAO.insertOne(request.body)
-    .then(result=>response.redirect('/api/products/'))
+    .then(result=>response.json('/api/products/'))
     .catch(err=>response.json({status:"Server unavailable"}));
 };
 
 export const updateOne=(request, response)=>{
     console.log(request.body);
     productDAO.updateOne(request.params.barcode, request.body)
-    .then(result=>response.redirect('/api/products/'))
+    .then(result=>response.json('/api/products/'))
     .catch(err=>response.json({status:"Server unavailable"}));
 };
 
 export const deleteOne=(request, response)=>{
     productDAO.deletetOne(request.params.barcode)
-    .then(result=>response.redirect('/api/products/'))
+    .then(result=>response.json('/api/products/'))
     .catch(err=>response.json({status:"Server unavailable"}));
 };
