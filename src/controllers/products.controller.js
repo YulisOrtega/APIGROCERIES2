@@ -2,7 +2,7 @@ import productDAO from "../dao/products.dao.js";
 
 export const getAll=(request, response)=>{
     productDAO.getAll()
-    .then(products=>response.render('../src/views/index', {products}))
+    .then(products=>response.json('../src/views/index', {products}))
     .catch(err=>response.json({
         status:"Server unavailable"
     }));
@@ -13,7 +13,7 @@ export const getOne=(request, response)=>{
     .then(product=>{
         !product ? response.json({
             message: "product not found"
-        }) : response.render('../src/views/edit',{product});
+        }) : response.json('../src/views/edit',{product});
     })
     .catch(err=>response.json({
         status:"Server unavailable"
